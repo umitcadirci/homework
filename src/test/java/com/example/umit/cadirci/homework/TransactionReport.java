@@ -14,23 +14,23 @@ class TransactionReport {
 
 	private Map<String,String> parameters=new HashMap<>();
 	private String token="";
-	private final String url="https://sandbox-reporting.rpdpymnt.com/api/v3/transactions/report";
+	private final String url="https://sandbox-reporting.rpdpymnt.com/api/v3/transaction/list";
 
 	@Test
 	void contextLoads() {
 
 		parameters.put("fromDate","2015-07-01");
 		parameters.put("toDate","2015-10-01");
-		parameters.put("merchant","1");
-		parameters.put("acquirer","1");
+		//parameters.put("merchant","1");
+		//parameters.put("acquirer","1");
 
 		token=new TokenService().createToken();
 
 		try {
-			System.out.println("----------Transaction Report----------");
+			System.out.println("----------Transaction Query----------");
 			System.out.println(new RestService().post(url,parameters,token));
 		}catch (IOException e){
-			System.out.println("----------Transaction Report Error----------");
+			System.out.println("----------Transaction Query----------");
 			e.printStackTrace();
 		}
 
